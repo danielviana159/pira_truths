@@ -11,14 +11,17 @@ class IndexMainView(TemplateView):
         context = super().get_context_data(**kwargs)
         raw = ttg.Truths(['p', 'q', 'r'], ['p and q and r', 'p or q or r', '(p or (~q)) => r'])
         context['pira_table_truths'] = raw
-        print(raw)
-        print(type(raw))
+        #print(raw)
+        #print(type(raw))
         raw_ = str(raw)
         raw_ = raw_.replace('+','').replace('-','').replace('||','').replace(' ','').replace('and',' & ').replace('or', ' ó ').replace('\n','')
+        print (raw_)
 
         raw_arr = raw_.split('|')
         raw_arr.remove('')
-        print(raw_arr)
+        #print(raw_arr)
+
+        context['pira_array'] = raw_arr
 
         return context
 
